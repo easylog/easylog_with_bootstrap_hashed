@@ -1,0 +1,1 @@
+# EasyLog mit Bootstrap API und Passwort-Hashing

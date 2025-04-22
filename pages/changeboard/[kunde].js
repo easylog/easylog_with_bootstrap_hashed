@@ -1,0 +1,1 @@
+export default function KundePage() { return <div>Einträge</div> }
