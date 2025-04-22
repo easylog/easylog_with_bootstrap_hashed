@@ -5,7 +5,9 @@ import bcrypt from 'bcryptjs';
 const client = new MongoClient(process.env.MONGODB_URI);
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') return res.status(405).end();
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Nur POST erlaubt' });
+  }
 
   try {
     await client.connect();
@@ -27,6 +29,6 @@ export default async function handler(req, res) {
     return res.status(200).json({ token });
   } catch (err) {
     console.error(err);
-    return res.status(500).json({ message: 'Serverfehler' });
+    return res.status(500).json({ message: 'Interner Fehler' });
   }
 }
